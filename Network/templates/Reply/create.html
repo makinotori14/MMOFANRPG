@@ -1,0 +1,12 @@
+{% extends 'BaseTemplate/base_template.html' %}
+
+{% block head_title %}Reply{% endblock %}
+
+{% block main_content %}
+<form method="POST" style="margin: 3%;">
+    {% csrf_token %}
+    <textarea style="width: 70%; height: 50vh; resize: none;" name="text" type="text" place="Write here..."></textarea>
+    <br>
+    <input type="submit" value="Отправить">
+</form>
+{% endblock %}

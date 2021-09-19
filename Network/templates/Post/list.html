@@ -1,0 +1,42 @@
+{% extends 'BaseTemplate/base_template.html' %}
+{% block status_posts %}active{% endblock %}
+{% block head_title %}Posts{% endblock %}
+{% block main_content %}
+<div class="container px-4 text-center" >
+<h1>All posts</h1>
+<hr size="6px">
+{% for post in posts %}
+<div>
+    <h3><a href="{% url 'Posts_detail' post.pk %}">{{post}}</a></h3>
+    <p>{{post.text|truncatechars:60}}</p>
+    <hr>
+</div>
+
+{% endfor %}
+<div class="d-flex justify-content-center">
+{% if is_paginated %}
+<nav  aria-label="Page navigation"></nav>
+<ul class="pagination">
+    {% if page_obj.has_previous %}
+    <li class="page-item"><a class="page-link" href="?page=1">First</a></li>
+    <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}"><</a></li>
+    {% endif %}
+ 
+    {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+            <li class="page-item active"><a class="page-link">{{num}}</a></li>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+            <li class="page-item"><a class="page-link" href="?page={{ num }}">{{num}}</a></li>
+        {% endif %}
+    {% endfor %}
+ 
+    {% if page_obj.has_next %}
+    <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">></a></a></li>
+    <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Last</a></li>
+    {% endif %}
+</ul>
+</nav>
+{% endif %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'BaseTemplate/base_template.html' %}
+
+{% block head_title %}{{post|truncatechars:15}}{% endblock %}
+
+{% block main_content %}
+<div class="container px-4 text-center">
+    <h1 class="fw">{{post}}</h1>
+    <h3>{{post.category}}</h3>
+    <p>{{post.text}}</p>
+    {% for f in files %}
+    <div>
+    <a href="http://localhost:8000{{f.files.url}}">{{f.filename}}</a>
+    </div>
+    {% endfor %}
+    {% if post.author == user %}
+    <a href="{% url 'Posts_update' post.pk %}" style="color: green;">Редактировать</a>
+    {% else %}
+    <a href="{% url 'Reply_create' post.pk %}" style="color: rgb(19, 88, 77);">Ответить</a>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'BaseTemplate/base_template.html' %}
+
+{% block head_title %}Replies{% endblock %}
+
+{% block main_content %}
+<div style="margin: 3%;">
+<form method="get">
+    {% csrf_token %}
+    {{ filter.form }}
+    <input type="submit" value="Найти">
+</form>
+{% if filter.qs %}
+<ul>
+{% for reply in filter.qs %}
+<li><a href="{% url 'Reply_detail' reply.pk %}">{{reply.text|truncatechars:50}}</a></li>
+{% endfor %}
+</ul>
+{% else %}
+<h2>Нет откликов =)</h2>
+{% endif %}
+</div>
+{% endblock %}

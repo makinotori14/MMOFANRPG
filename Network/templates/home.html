@@ -1,0 +1,36 @@
+{% extends 'BaseTemplate/base_template.html' %}
+{% block head_title %}Home{% endblock head_title %}
+{% block main_content %}
+        <!-- Header-->
+        <header class="bg-primary bg-gradient text-white" style="margin-top: -50px;">
+            <div class="container px-4 text-center">
+                <h1 class="fw-bolder">Добро Пожаловать в MMORPGFAN</h1>
+                <p class="lead">Лучший MMORPG сервис по поиску объявлений</p>
+                <a class="btn btn-lg btn-light" href="{% url 'Posts' %}">Все объявления!</a>
+            </div>
+        </header>
+        <!-- About section-->
+        <section id="about">
+            <div class="container px-4">
+                <div class="row gx-4 justify-content-center">
+                    <div class="col-lg-8">
+                        <h2>О нас</h2>
+                        <p class="lead">Мы группа фанатов MMORPG, которая решила создать сервис, позволяющий игрокам со всего света делиться объявлениями и отвечать на них!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Services section-->
+        <section class="bg-light" id="services">
+            <div class="container px-4">
+                <div class="row gx-4 justify-content-center">
+                    <div class="col-lg-8">
+                        <h2>Что я могу здесь делать?</h2>
+                        <p class="lead">Вы можете создавать объявления, предварительно выбрав одну из сущесвующиъ категорий: Танки, Хилы, ДД... Также на ваши объявления могут отзываться другие пользователи, уведомление об этом будет приходить вам
+                            на электронную почту.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+{% endblock %}

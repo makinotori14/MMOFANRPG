@@ -1,0 +1,9 @@
+{% extends 'BaseTemplate/base_template.html' %}
+{% block head_title %}Update Post{% endblock %}
+{% block main_content %}
+<form style="margin: 2% 3%" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Редактировать">
+</form>
+{% endblock %}

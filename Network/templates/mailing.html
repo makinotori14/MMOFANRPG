@@ -1,0 +1,14 @@
+{% extends 'BaseTemplate/base_template.html' %}
+
+{% block head_title %}Mailing{% endblock %}
+
+{% block main_content %}
+<form style="margin: 2% 3%" method="POST">
+    {% csrf_token %}
+    <input type="text" name="subject" placeholder="Тема">
+    <br>
+    <textarea style="margin: 20px 0; width: 70%; height: 40vh; resize: none;" name="message"></textarea>
+    <br>
+    <input type="submit" value="Разослать!">
+</form>
+{% endblock %}

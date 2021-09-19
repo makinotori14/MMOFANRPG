@@ -1,0 +1,25 @@
+{% extends 'BaseTemplate/base_template.html' %}
+
+{% block head_title %}Reply{% endblock %}
+
+{% block main_content %}
+<div style="margin: 3%;">
+<h2>Ответ к "{{reply.post.title}}"</h2>
+<h5>{{reply.author.username}}</h5>
+<p>{{reply}}</p>
+{% if not reply.status %}
+<form method="POST" style="margin-bottom: 5px;">
+    {% csrf_token %}
+    <input type="submit" value="Принять" style="border: none; color: green;">
+</form>
+
+<form action="{% url 'Reply_delete' reply.pk %}">
+    <input type="submit" style="color:red; border: none;" value="Отколнить">
+</form>
+
+{% else %}
+<span style="color:rgb(23, 78, 23); font-size: 30px;">Принято</span>
+{% endif %}
+</div>
+
+{% endblock %}

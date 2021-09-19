@@ -1,0 +1,14 @@
+{% extends 'BaseTemplate/base_template.html' %}
+
+{% block head_title %}Deny{% endblock %}
+
+{% block main_content %}
+<div style="margin: 5%;">
+<h2>Вы уверены?</h2>
+
+<form method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Отклонить">
+</form>
+</div>
+{% endblock %}

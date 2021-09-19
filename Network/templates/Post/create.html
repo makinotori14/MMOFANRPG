@@ -1,0 +1,21 @@
+{% extends 'BaseTemplate/base_template.html' %}
+{% block head_title %}Create Post{% endblock %}
+{% block main_content %}
+<form style="margin: 2% 3%" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="text" name="title" style="width: 40%;" placeholder="Title" required></input>
+    <br>
+    <textarea style="margin: 20px 0; width: 70%; height: 40vh; resize: none;" name="text" required></textarea>
+    <br>
+    <label>Category  
+        <select name="category" required>
+        {% for category in categories %}
+            <option>{{category}}</option>
+        {% endfor %}
+        </select>
+    </label>
+    <br>
+    <input name="files" type="file" multiple>
+    <input style="margin-top: 10px;" type="submit" value="Создать"></input>
+</form>
+{% endblock %}
